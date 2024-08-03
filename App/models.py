@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFit
 
 class User(AbstractUser):
     first_name = models.CharField(max_length=100)
@@ -17,6 +19,11 @@ class Participant(models.Model):
     institution = models.CharField(max_length=100)
     faculty = models.CharField(max_length=190)
     department = models.CharField(max_length=100)
-    fingerprint = models.CharField(max_length=30)
+    fingerprint = ProcessedImageField(
+        upload_to='fingerprints/',
+        processors=[ResizeToFit(300, 300)],
+        format='JPEG',
+        options={'quality': 90}
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

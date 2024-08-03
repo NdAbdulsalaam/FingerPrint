@@ -8,6 +8,9 @@ django = "*"
 djangorestframework = "*"
 python-dotenv = "*"
 mysqlclient = "*"
+pyfingerprint = "*"
+pillow = "*"
+django-imagekit = "*"
 
 [dev-packages]
 
