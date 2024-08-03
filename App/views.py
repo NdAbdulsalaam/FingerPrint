@@ -120,8 +120,8 @@ class ParticipantAddView(APIView):
     def post(self, request):
         try:
             # Initialize the fingerprint sensor (assuming it's connected to COM port 3)
-            f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
-
+            # f = PyFingerprint('/dev/ttyUSB0', 57600, 0xFFFFFFFF, 0x00000000)
+            f = PyFingerprint('COM3', 57600, 0xFFFFFFFF, 0x00000000)
             if f.verifyPassword() == False:
                 raise ValueError('The given fingerprint sensor password is wrong!')
 

@@ -33,6 +33,10 @@
         th {
             background-color: #f2f2f2;
         }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -60,12 +64,8 @@
                     <td>{{ participant.institution }}</td>
                     <td>{{ participant.faculty }}</td>
                     <td>{{ participant.department }}</td>
-                    <td>{{ participant.fingerprint }}</td>
+                    <td><img src="{{ participant.fingerprint.url }}" alt="Fingerprint"></td>
                     <td>{{ participant.created_at }}</td>
                 </tr>
                 {% endfor %}
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
+           

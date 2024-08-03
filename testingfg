@@ -1,0 +1,13 @@
+from pyfingerprint.pyfingerprint import PyFingerprint
+
+try:
+    # Initialize the fingerprint sensor with the correct COM port and baud rate
+    f = PyFingerprint('COM3', 57600, 0xFFFFFFFF, 0x00000000)  # Example COM port
+
+    # Directly proceed with operations
+    while not f.readImage():
+        print("Waiting for finger...")
+    print("Finger detected.")
+
+except Exception as e:
+    print(f'Error: {e}')
