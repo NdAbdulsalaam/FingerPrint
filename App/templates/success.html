@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Login</title>
+    <title>success</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,7 +18,7 @@
             flex-direction: column;
             gap: 10px;
         }
-        input[type="text"], input[type="password"] {
+        input[type="text"], input[type="email"] {
             padding: 10px;
             font-size: 16px;
         }
@@ -40,24 +40,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>Login</h2>
-        <form method="post">
-            {% csrf_token %}
-
-            {% if errors %}
-                <div class="error">
-                    {% for error in errors %}
-                        <p> {{ error }} </p>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
-    </div>
+        <h2>Volunteer added!</h2>
+        <p><a href="{% url 'add-volunteer' %}">Add new volunteer</a></p>
 </body>
 </html>

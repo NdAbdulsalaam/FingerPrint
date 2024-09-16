@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Contact Us</title>
+    <title>Contact</title>
     <style>
         body { font-family: Arial, sans-serif; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -46,8 +46,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>Contact Us</h1>
-        <form method="post" action="{% url 'user-contact' %}" onsubmit="handleSubmit(event)">
+        <h1>Reach out to volunteer</h1>
+        <form method="post" action="{% url 'vol-contact' %}" onsubmit="handleSubmit(event)">
             {% csrf_token %}
             <div id="messages"></div>
             <input type="text" name="name" placeholder="Your Name" required>

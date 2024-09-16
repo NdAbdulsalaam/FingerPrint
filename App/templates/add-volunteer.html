@@ -153,8 +153,8 @@
 </head>
 <body>
     <div class="container">
-        <h2>Capture Fingerprint</h2>
-        <form method="post" action="{% url 'add-participant' %}">
+        <h2>Add Volunteer</h2>
+        <form method="post" action="{% url 'add-volunteer' %}">
             {% csrf_token %}
             
             {% if errors %}
@@ -171,14 +171,21 @@
             <label for="last_name">Last Name:</label>
             <input type="text" id="last_name" name="last_name">
 
-            <label for="gender">Gender:</label>
-            <select id="gender" name="gender">
+            <label for="email">Email:</label>
+            <select id="email" name="email">
                 <option value="M">Male</option>
                 <option value="F">Female</option>
             </select>
 
+            <label for="matric_number">Matric Number:</label>
+            <input type="text" id="matric_number" name="matric_number">
+
             <label for="institution">Institution:</label>
-            <input type="text" id="institution" name="institution">
+            <select id="email" name="email">
+                <option value="UI">University of Ibadan</option>
+                <option value="FSSOYO">Federal School of Surveying, Oyo</option>
+                <option value="EAUEDOYO">Emmanuel Alayande University of Education, Oyo</option>
+            </select>
 
             <label for="faculty">Faculty:</label>
             <input type="text" id="faculty" name="faculty">

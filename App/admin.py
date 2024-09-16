@@ -1,14 +1,18 @@
 from django.contrib import admin
-from .models import User, Participant
+from .models import Volunteer
 
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'username', 'email', 'date_of_birth', 'gender', 'created_at', 'updated_at')
-    search_fields = ('username', 'email', 'first_name')
-
-class ParticipantAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'created_at', 'updated_at')
-    search_fields = ('first_name',)
+class VolunteerAdmin(admin.ModelAdmin):
+    list_display = ('first_name',
+                    'last_name',
+                    'email',
+                    'matric_number',
+                    'institution',
+                    'faculty',
+                    'department',
+                    'fingerprint'
+                    )
+    
+    search_fields = ('email', 'matric_number')
 
 # Register your models with custom admin configuration
-admin.site.register(User, UserAdmin)
-admin.site.register(Participant, ParticipantAdmin)
+admin.site.register(Volunteer, VolunteerAdmin)
