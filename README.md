@@ -1,1 +1,1 @@
-# finger-print-app
+# Fingerprint App
