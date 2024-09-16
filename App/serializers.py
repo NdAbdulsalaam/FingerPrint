@@ -4,16 +4,16 @@ from .models import Volunteer
 
 # User = get_user_model()
 
-class UserSerializer(serializers.ModelSerializer):
+class VolunteerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Volunteer
         fields = '__all__'
-        #fields = ('first_name', 'last_name', 'username', 'email', 'date_of_birth', 'gender', 'password1', 'password2')
     
     def create(self, validated_data):
+        if 'fingerprint' not in validated_data or not validated_data['fingerprint']:
+            validated_data['fingerprint'] = 'default_images/default_fingerprint.jpg'
         volunteer = Volunteer(**validated_data)
         volunteer.save()
-        return volunteer
 
 
 class ContactSerializer(serializers.Serializer):

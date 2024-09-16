@@ -47,7 +47,7 @@
 <body>
     <div class="container">
         <h1>Reach out to volunteer</h1>
-        <form method="post" action="{% url 'vol-contact' %}" onsubmit="handleSubmit(event)">
+        <form method="post" action="{% url 'contact-volunteer' %}" onsubmit="handleSubmit(event)">
             {% csrf_token %}
             <div id="messages"></div>
             <input type="text" name="name" placeholder="Your Name" required>

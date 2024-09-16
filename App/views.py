@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.http import JsonResponse
-from .serializers import UserSerializer, ContactSerializer
+from .serializers import VolunteerSerializer, ContactSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -21,15 +21,16 @@ class AddVolunteerView(APIView):
             'institution': request.POST.get('institution'),
             'faculty': request.POST.get('faculty'),
             'department': request.POST.get('department'),
-            'fingerprint': request.POST.get('fingerprint'),
+            'fingerprint': request.FILES.get('fingerprint')
         }
-        serializer = UserSerializer(data=data)
+        serializer = VolunteerSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
-            return redirect('success.html')
+            return redirect('success')
         else: 
             errors = [str(error) for error_list in serializer.errors.values() for error in error_list]
             return render(request, 'add-volunteer.html', {'errors': errors})
+
     
 class SuccessView(APIView):
     def get(self, request):
