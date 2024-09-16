@@ -18,7 +18,7 @@ class Volunteer(models.Model):
         upload_to='fingerprints/',
         processors=[ResizeToFit(300, 300)],
         options={'quality': 90},
-        default='media/default_fingerprint.jpg'
+        default='default_fingerprint.jpg'
     )
 
     created_at = models.DateTimeField(auto_now_add=True)

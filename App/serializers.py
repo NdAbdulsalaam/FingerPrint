@@ -7,13 +7,14 @@ from .models import Volunteer
 class VolunteerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Volunteer
-        fields = '__all__'
+    
+        fields = ['first_name', 'last_name', 'email', 'matric_number', 'institution', 'faculty', 'department']
     
     def create(self, validated_data):
-        if 'fingerprint' not in validated_data or not validated_data['fingerprint']:
-            validated_data['fingerprint'] = 'default_images/default_fingerprint.jpg'
-        volunteer = Volunteer(**validated_data)
-        volunteer.save()
+        # if 'fingerprint' not in validated_data or not validated_data['fingerprint']:
+        #     validated_data['fingerprint'] = 'media/default_fingerprint.jpg'
+        # volunteer = Volunteer(**validated_data)
+        Volunteer.save()
 
 
 class ContactSerializer(serializers.Serializer):

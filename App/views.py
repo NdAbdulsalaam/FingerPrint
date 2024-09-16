@@ -20,8 +20,7 @@ class AddVolunteerView(APIView):
             'matric_number': request.POST.get('matric_number'),
             'institution': request.POST.get('institution'),
             'faculty': request.POST.get('faculty'),
-            'department': request.POST.get('department'),
-            'fingerprint': request.FILES.get('fingerprint')
+            'department': request.POST.get('department')
         }
         serializer = VolunteerSerializer(data=data)
         if serializer.is_valid():
