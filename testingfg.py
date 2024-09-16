@@ -13,4 +13,5 @@ try:
         print("Failed to verify password.")
 
 except Exception as e:
+    print("Unable to intract with the FingerPrint Scanner.\nFind error detail below")
     print(f'Error: {e}')
