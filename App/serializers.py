@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Volunteer
 
-# User = get_user_model()
 
 class VolunteerSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,8 +8,6 @@ class VolunteerSerializer(serializers.ModelSerializer):
         fields = '__all__'
             
     def create(self, validated_data):
-        # if 'fingerprint' not in validated_data or not validated_data['fingerprint']:
-        #     validated_data['fingerprint'] = 'media/default_fingerprint.jpg'
         volunteer = Volunteer(**validated_data)
         volunteer.save()
         return volunteer
