@@ -12,6 +12,7 @@ pyfingerprint = "*"
 pillow = "*"
 django-imagekit = "*"
 psycopg2 = "*"
+dj-database-url = "*"
 
 [dev-packages]
 

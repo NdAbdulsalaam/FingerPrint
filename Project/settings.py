@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 # Load environment variables from .env file
 load_dotenv()
@@ -80,37 +81,39 @@ WSGI_APPLICATION = 'Project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+import dj_database_url
+import os
 
-# MYSQL DATABASE
-## Local host on my laptop
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+# Combined dictionary of all database configurations
+ALL_DATABASES = {
+    'heroku': dj_database_url.config(default=os.environ.get('DATABASE_URL')),
+    'sqlite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'mysql_local': {
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'fingerprint_db',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
+    },
+    'mysql_cpanel': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'easytoph_fp',
+        'USER': 'easytoph_wp01',
+        'PASSWORD': 'easytoph_wp01',
+        'HOST': '131.153.147.106',
+        'PORT': '3306',
     }
 }
 
-## Easytophop Cpanel
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'easytoph_fp',
-#         'USER': 'easytoph_wp01',
-#         'PASSWORD': 'easytoph_wp01',
-#         'HOST': '131.153.147.106',
-#         'PORT': '3306',
-#     }
-# }
+# Assigning the DATABASES variable
+DATABASES = {
+    'default': ALL_DATABASES['heroku']
+}
+
 
 # cpanel ip: 131.153.147.106
 # 
