@@ -111,7 +111,7 @@ ALL_DATABASES = {
 
 # Assigning the DATABASES variable
 DATABASES = {
-    'default': ALL_DATABASES['heroku']
+    'default': ALL_DATABASES['sqlite']
 }
 
 
