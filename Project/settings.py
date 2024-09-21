@@ -80,13 +80,13 @@ WSGI_APPLICATION = 'Project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+# ## Local host on my laptop
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
@@ -98,6 +98,21 @@ DATABASES = {
 #     }
 # }
 
+## Easytophop Cpanel
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'easytoph_fp',
+        'USER': 'easytoph_wp01',
+        'PASSWORD': 'easytoph_wp01',
+        'HOST': '131.153.147.106',
+        'PORT': '3306',
+    }
+}
+
+# cpanel ip: 131.153.147.106
+# 
+# my laptop ip: from myipaddress: 197.211.61.23, from cpanel: 197.211.53.10
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
