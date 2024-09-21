@@ -80,12 +80,12 @@ WSGI_APPLICATION = 'Project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 # ## Local host on my laptop
 # DATABASES = {
 #     'default': {
@@ -98,17 +98,17 @@ WSGI_APPLICATION = 'Project.wsgi.application'
 #     }
 # }
 
-## Easytophop Cpanel
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'easytoph_fp',
-        'USER': 'easytoph_wp01',
-        'PASSWORD': 'easytoph_wp01',
-        'HOST': '131.153.147.106',
-        'PORT': '3306',
-    }
-}
+# ## Easytophop Cpanel
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'easytoph_fp',
+#         'USER': 'easytoph_wp01',
+#         'PASSWORD': 'easytoph_wp01',
+#         'HOST': '131.153.147.106',
+#         'PORT': '3306',
+#     }
+# }
 
 # cpanel ip: 131.153.147.106
 # 
