@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'Project.wsgi.application'
 ## Local host on my laptop
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'fingerprint_db',
         'USER': 'root',
         'PASSWORD': '',
