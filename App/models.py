@@ -1,7 +1,9 @@
 from django.db import models
 import uuid
+import os
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFit
+from django.core.exceptions import ValidationError
 
 class Volunteer(models.Model):
     first_name = models.CharField(max_length=25)
@@ -18,10 +20,7 @@ class Volunteer(models.Model):
     fingerprint = ProcessedImageField(
         upload_to='volunteers',
         processors=[ResizeToFit(300, 300)],
-        options={'quality': 100},
-        default='default_fingerprint.jpg',
-        blank=True,
-        null=True
+        options={'quality': 100}
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -31,14 +30,26 @@ class Volunteer(models.Model):
 
 class Participant(models.Model):
     id = models.UUIDField(primary_key=True, max_length=10, default=uuid.uuid4, editable=False)
-    fingerprint = ProcessedImageField(
+    image = ProcessedImageField(
         upload_to='participants',
         processors=[ResizeToFit(300, 300)],
         options={'quality': 100},
-        default='default_fingerprint.jpg',
-        blank=True,
-        null=True
     )
+    image_name = models.CharField(max_length=255, blank=True, unique=True, editable=False)
+
+    def clean(self):
+        # Get the file name without the directory path
+        if self.image:
+            image_name = os.path.basename(self.image.name)
+            # Check if another record already has this image name
+            if Participant.objects.filter(image_name=image_name).exists():
+                raise ValidationError(f"An image with the name '{image_name}' already exists.")
+            self.image_name = image_name  # Set the field to match the image name
+    
+    def save(self, *args, **kwargs):
+        # Perform the validation before saving
+        self.clean()
+        super(Participant, self).save(*args, **kwargs)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -16,9 +16,10 @@ class VolunteerAdmin(admin.ModelAdmin):
     
 class ParticipantAdmin(admin.ModelAdmin):
     list_display = (   'id',
-                        'fingerprint'
+                        'image_name'
                     )
-    search_fields = ['id']
+    search_fields = ('id', 'image_name')
+    sortable_by  = ['image_name']
 
 # Register your models with custom admin configuration
 admin.site.register(Volunteer, VolunteerAdmin)
