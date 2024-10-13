@@ -86,7 +86,7 @@ import os
 
 # Combined dictionary of all database configurations
 ALL_DATABASES = {
-    'heroku': dj_database_url.config(default=os.environ.get('DATABASE_URL')),
+    # 'heroku': dj_database_url.config(default=os.environ.get('DATABASE_URL')),
     'sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),

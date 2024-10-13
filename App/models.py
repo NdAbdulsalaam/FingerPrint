@@ -16,10 +16,10 @@ class Volunteer(models.Model):
     faculty = models.CharField(max_length=30)
     department = models.CharField(max_length=50)
     fingerprint = ProcessedImageField(
-        upload_to='fingerprints/volunteer',
+        upload_to='volunteers',
         processors=[ResizeToFit(300, 300)],
         options={'quality': 100},
-        default='fingerprints/default_fingerprint.jpg',
+        default='default_fingerprint.jpg',
         blank=True,
         null=True
     )
@@ -32,10 +32,10 @@ class Volunteer(models.Model):
 class Participant(models.Model):
     id = models.UUIDField(primary_key=True, max_length=10, default=uuid.uuid4, editable=False)
     fingerprint = ProcessedImageField(
-        upload_to='fingerprints/participant',
+        upload_to='participants',
         processors=[ResizeToFit(300, 300)],
         options={'quality': 100},
-        default='fingerprints/default_fingerprint.jpg',
+        default='default_fingerprint.jpg',
         blank=True,
         null=True
     )
